@@ -7,8 +7,8 @@ import java.net.URL;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Education {
-    // private String id;
-    // private String personID;
+    private String id;
+    private String personID;
     private String type;
     private String instituteName;
     private String location;
@@ -18,8 +18,8 @@ public class Education {
 
 
 public Education(
-        // @JsonProperty("id") String id, 
-        // @JsonProperty("personID") String personID, 
+        @JsonProperty("id") String id, 
+        @JsonProperty("personID") String personID, 
         @JsonProperty("type") String type, 
         @JsonProperty("instituteName") String instituteName, 
         @JsonProperty("location") String location, 
@@ -28,8 +28,8 @@ public Education(
         @JsonProperty("grade") String grade
 
     ){
-        // this.id = id;
-        // this.personID = personID;
+        this.id = id;
+        this.personID = personID;
         this.type = type;
         this.instituteName = instituteName;
         this.location = location;
@@ -37,21 +37,21 @@ public Education(
         this.endDate = endDate;
         this.grade = grade;
     }
-        // public String getId(){
-        //     return id;
-        // }
+        public String getId(){
+            return id;
+        }
     
-        // public void getId(String id){
-        //     this.id = id;
-        // }
+        public void setId(String id){
+            this.id = id;
+        }
 
-        // public String getPersonID(){
-        //     return personID;
-        // }
+        public String getPersonID(){
+            return personID;
+        }
     
-        // public void setPersonID(String personID){
-        //     this.personID = personID;
-        // }
+        public void setPersonID(String personID){
+            this.personID = personID;
+        }
 
         public String getType(){
             return type;

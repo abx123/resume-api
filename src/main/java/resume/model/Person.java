@@ -5,7 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Person {
-    // private String id;
+    private String id;
     private String name;
     private String title;
     private String phoneNumber;
@@ -14,7 +14,7 @@ public class Person {
     private List<String> skills;
 
     public Person(
-        // @JsonProperty("id") String id, 
+        @JsonProperty("id") String id, 
         @JsonProperty("name") String name, 
         @JsonProperty("title") String title, 
         @JsonProperty("phoneNumber") String phoneNumber, 
@@ -22,7 +22,7 @@ public class Person {
         @JsonProperty("summary") String summary,
         @JsonProperty("skills") List<String> skills
     ){
-        // this.id = id;
+        this.id = id;
         this.name = name;
         this.title = title;
         this.phoneNumber = phoneNumber;
@@ -31,13 +31,13 @@ public class Person {
         this.skills = skills;
     }
     
-    // public String getId(){
-    //     return id;
-    // }
+    public String getId(){
+        return id;
+    }
 
-    // public void setId(String id){
-    //     this.id = id;
-    // }
+    public void setId(String id){
+        this.id = id;
+    }
 
     public String getName(){
         return name;

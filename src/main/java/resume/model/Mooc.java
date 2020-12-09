@@ -6,21 +6,21 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Mooc {
-    // private String id;
-    // private String personID;
+    private String id;
+    private String personID;
     private String name;
     private String issuedBy;
     private Date issueDate;
     private String credentialID;
     private URL credentialURL;
     private URL thumbnailURL;
-    // @JsonProperty("id") String id, @JsonProperty("personID") String personID,
-            
-    public Mooc(@JsonProperty("name") String name, @JsonProperty("issuedBy") String issuedBy,
+
+    public Mooc(@JsonProperty("id") String id, @JsonProperty("personID") String personID,
+            @JsonProperty("name") String name, @JsonProperty("issuedBy") String issuedBy,
             @JsonProperty("issueDate") Date issueDate, @JsonProperty("credentialID") String credentialID,
             @JsonProperty("credentialURL") URL credentialURL, @JsonProperty("thumbnailURL") URL thumbnailURL) {
-        // this.id = id;
-        // this.personID = personID;
+        this.id = id;
+        this.personID = personID;
         this.name = name;
         this.issuedBy = issuedBy;
         this.issueDate = issueDate;
@@ -29,21 +29,21 @@ public class Mooc {
         this.thumbnailURL = thumbnailURL;
     }
 
-    // public String getId() {
-    //     return id;
-    // }
+    public String getId() {
+        return id;
+    }
 
-    // public void setId(String id) {
-    //     this.id = id;
-    // }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    // public String getPersonID() {
-    //     return personID;
-    // }
+    public String getPersonID() {
+        return personID;
+    }
 
-    // public void setPersonID(String personID) {
-    //     this.personID = personID;
-    // }
+    public void setPersonID(String personID) {
+        this.personID = personID;
+    }
 
     public String getName() {
         return name;
@@ -61,7 +61,7 @@ public class Mooc {
         this.issuedBy = issuedBy;
     }
 
-    public Date getissueDate() {
+    public Date getIssueDate() {
         return issueDate;
     }
 

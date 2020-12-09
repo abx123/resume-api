@@ -18,21 +18,13 @@ import java.util.UUID;
 @SuppressWarnings("unchecked")
 public class DataMapper {
 
-    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static Logger log = LoggerFactory.getLogger(DataMapper.class.getName());
 
-    // public static MovieTitle mapToMovieTitle(Document document) {
-    //     MovieTitle movie = new MovieTitle();
-    //     movie.setId(document.getObjectId("_id").toHexString());
-    //     movie.setTitle(MessageFormat.format("{0}", document.get("title")));
-    //     return movie;
-    // }
-
     public static Person mapToPerson(Bson bson) {
-        Person person = new Person(null, null, null, null, null, null);
+        Person person = new Person(null, null, null, null, null, null, null);
         Document document = (Document) bson;
         try {
-            // person.setId(document.getObjectId("_id").toHexString());
+            person.setId(document.getObjectId("_id").toHexString());
             person.setName(document.getString("name"));
             person.setTitle(document.getString("title"));
             person.setPhoneNumber(document.getString("phoneNumber"));
@@ -47,10 +39,11 @@ public class DataMapper {
     }
 
     public static Education mapToEducation(Bson bson) {
-        Education education = new Education(null, null, null, null, null, null);
+        Education education = new Education(null, null, null, null, null, null, null, null);
         Document document = (Document) bson;
         try {
-            // person.setId(document.getObjectId("_id").toHexString());
+            education.setId(document.getObjectId("_id").toHexString());
+            education.setPersonID(document.getObjectId("personID").toHexString());
             education.setType(document.getString("type"));
             education.setInstituteName(document.getString("instituteName"));
             education.setLocation(document.getString("location"));
@@ -65,10 +58,11 @@ public class DataMapper {
     }
 
     public static Certificate mapToCertificate(Bson bson) {
-        Certificate certificate = new Certificate(null, null, null, null, null, null, null);
+        Certificate certificate = new Certificate(null, null, null, null, null, null, null, null, null);
         Document document = (Document) bson;
         try {
-            // person.setId(document.getObjectId("_id").toHexString());
+            certificate.setId(document.getObjectId("_id").toHexString());
+            certificate.setPersonID(document.getObjectId("personID").toHexString());
             certificate.setName(document.getString("name"));
             certificate.setIssuedBy(document.getString("issuedBy"));
             certificate.setIssueDate(document.getDate("issueDate"));
@@ -84,10 +78,11 @@ public class DataMapper {
     }
 
     public static Mooc mapToMooc(Bson bson) {
-        Mooc mooc = new Mooc(null, null, null, null, null, null);
+        Mooc mooc = new Mooc(null, null, null, null, null, null, null, null);
         Document document = (Document) bson;
         try {
-            // person.setId(document.getObjectId("_id").toHexString());
+            mooc.setId(document.getObjectId("_id").toHexString());
+            mooc.setPersonID(document.getObjectId("personID").toHexString());
             mooc.setName(document.getString("name"));
             mooc.setIssuedBy(document.getString("issuedBy"));
             mooc.setIssueDate(document.getDate("issueDate"));
@@ -103,12 +98,11 @@ public class DataMapper {
 
     public static Experience mapToExperience(Bson bson) {
 
-        Experience experience = new Experience(null, null, null, null, null, null);
+        Experience experience = new Experience(null, null, null, null, null, null, null, null);
         Document document = (Document) bson;
         try {
-            // experience.setId(document.getObjectId("_id").toHexString());
-            // experience.setPersonID(document.getObjectId("personID").toHexString());
-
+            experience.setId(document.getObjectId("_id").toHexString());
+            experience.setPersonID(document.getObjectId("personID").toHexString());
             experience.setTitle(document.getString("title"));
             experience.setCompanyName(document.getString("companyName"));
             experience.setLocation(document.getString("location"));
