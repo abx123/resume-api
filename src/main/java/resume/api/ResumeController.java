@@ -6,19 +6,24 @@ import resume.service.ResumeService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.metrics.web.servlet.WebMvcTagsContributor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
 import io.micrometer.core.lang.NonNull;
-
 @RestController
 public class ResumeController {
     private final ResumeService resumeService;
@@ -27,9 +32,9 @@ public class ResumeController {
     public ResumeController(ResumeService resumeService){
         this.resumeService = resumeService;
     }
-
     @GetMapping(value="/resume/{personID}")
-    public Resume getResume(@PathVariable("personID") String id){
+    public Resume getResume(@PathVariable("personID") String id, HttpServletResponse response){
+        response.addHeader("Access-Control-Allow-Origin", "*");
         return this.resumeService.getResume(id);
     }
 
@@ -188,5 +193,16 @@ public class ResumeController {
         Map<String, Object> results = new HashMap<>();
         results.put("status", "ok");
         return ResponseEntity.ok(results);
+    }
+
+    @Bean
+    public WebMvcConfigurer configure(){
+        return new WebMvcConfigurer(){
+            @Override
+            public void addCorsMappings(CorsRegistry registry){
+                registry.addMapping("/*").allowedOrigins("*");
+            }
+        
+        };
     }
 }
